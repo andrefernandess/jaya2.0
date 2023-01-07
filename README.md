@@ -11,7 +11,8 @@ Essas instruções permitirão que você obtenha uma cópia do projeto em opera�
 De que coisas você precisa para instalar o software e como instalá-lo?
 
 Node JS
-NestJS
+Express
+TYPEORM
 MySql
 Docker
 Docker Compose
@@ -23,17 +24,16 @@ Subir o container do MYSQL com docker compose up
 
 ## ⚙️ Executando os testes
 
-Não houve implementaçao de testes.
+...
 
 ## 📦 Implantação
 
-Não é possivel a implantação do sistema no estado atual.
+...
 
 ## 🛠️ Construído com
 
 * [Node JS](https://nodejs.org/en/docs/)
 * [npm](https://www.npmjs.com/)
-* [NESTJS](https://docs.nestjs.com/)
 * [MYSQL](https://www.mysql.com/)
 * [Docker](https://www.docker.com/)
 
