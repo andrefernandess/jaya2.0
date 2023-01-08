@@ -5,7 +5,7 @@
   "username": "root",
   "password": "12345",
   "database": "testeJaya",
-  "entities": ["./src/modules/**/typeorm/entites/*ts"],
+  "entities": ["./src/modules/**/typeorm/entities/*ts"],
   "migrations": [
     "./src/shared/typeorm/migrations/*.ts"
   ],
