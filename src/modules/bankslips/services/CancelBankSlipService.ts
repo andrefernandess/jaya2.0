@@ -1,7 +1,7 @@
 import AppError from '../../../shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import BankSlip from '../typeorm/entities/bankslip';
-import { BankSlipRepository } from '../typeorm/repositories/ProductsRepository';
+import { BankSlipRepository } from '../typeorm/repositories/BankSlipRepository';
 
 interface IRequest {
   id: string;
@@ -16,7 +16,7 @@ class CancelBankSlipByIdService {
     if (!bank_slip) {
       throw new AppError('BankSlip not found with the specified id', 404);
     }
-    bank_slip.status = 'Cancelado';
+    bank_slip.status = 'CANCELED';
 
     await repository.save(bank_slip);
 

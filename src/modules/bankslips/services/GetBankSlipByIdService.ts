@@ -1,6 +1,6 @@
 import AppError from '../../../shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
-import { BankSlipRepository } from '../typeorm/repositories/ProductsRepository';
+import { BankSlipRepository } from '../typeorm/repositories/BankSlipRepository';
 import { BankSlipDto } from '../dtos/BankSlipDto';
 
 interface IRequest {

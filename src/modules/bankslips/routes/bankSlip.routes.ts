@@ -23,9 +23,15 @@ bankSlipRoutes.post(
   isAuthenticated,
   celebrate({
     [Segments.BODY]: {
-      due_date: Joi.string().required(),
-      total_in_cents: Joi.number().required(),
-      customer: Joi.date().required(),
+      due_date: Joi.string()
+        .required()
+        .message(' Invalid bankslip provided. Due date is required'),
+      total_in_cents: Joi.number()
+        .required()
+        .message(' Invalid bankslip provided. Total in cents is required'),
+      customer: Joi.date()
+        .required()
+        .message(' Invalid bankslip provided. Customer is required'),
     },
   }),
   controller.create,

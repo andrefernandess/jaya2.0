@@ -1,6 +1,6 @@
 import { getCustomRepository } from 'typeorm';
 import BankSlip from '../typeorm/entities/bankslip';
-import { BankSlipRepository } from '../typeorm/repositories/ProductsRepository';
+import { BankSlipRepository } from '../typeorm/repositories/BankSlipRepository';
 
 class ListBankSlipService {
   public async execute(): Promise<BankSlip[] | undefined> {

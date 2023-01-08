@@ -28,7 +28,7 @@ export default class bankSlipsController {
 
   public async create(request: Request, response: Response): Promise<Response> {
     const { due_date, total_in_cents, customer } = request.body;
-    const status = 'PENDENTE';
+    const status = 'PENDING';
     const service = new CreateBankSlipService();
 
     const bl = await service.execute({
