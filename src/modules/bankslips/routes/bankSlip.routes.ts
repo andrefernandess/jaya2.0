@@ -23,9 +23,9 @@ bankSlipRoutes.post(
   isAuthenticated,
   celebrate({
     [Segments.BODY]: {
-      due_date: Joi.string().required(),
+      due_date: Joi.date().required(),
       total_in_cents: Joi.number().required(),
-      customer: Joi.date().required(),
+      customer: Joi.string().required(),
     },
   }),
   controller.create,

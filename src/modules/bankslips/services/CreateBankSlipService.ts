@@ -1,6 +1,6 @@
 import { getCustomRepository } from 'typeorm';
 import BankSlip from '../typeorm/entities/bankslip';
-import { BankSlipRepository } from '../typeorm/repositories/ProductsRepository';
+import { BankSlipRepository } from '../typeorm/repositories/BankSlipRepository';
 
 interface IRequest {
   due_date: Date;
@@ -15,7 +15,7 @@ class CreateBankSlipService {
     total_in_cents,
     customer,
     status,
-  }: IRequest): Promise<BankSlip | undefined> {
+  }: IRequest): Promise<BankSlip> {
     const repository = getCustomRepository(BankSlipRepository);
 
     const bankslip = repository.create({
