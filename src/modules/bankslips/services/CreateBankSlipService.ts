@@ -1,11 +1,14 @@
 import { inject, injectable } from 'tsyringe';
 import BankSlip from '../typeorm/entities/bankslip';
-import BankSlipRepository from '../typeorm/repositories/BankSlipRepository';
-import { IBankSlipRepository } from '../typeorm/repositories/interfaces/IBankSlipRepository';
-import IRequest from '../typeorm/repositories/interfaces/IRequest';
+import { IBankSlipRepository } from '../interfaces/IBankSlipRepository';
+import IRequest from '../interfaces/IRequest';
 
+@injectable()
 class CreateBankSlipService {
-  constructor(private bankSlipRepository: BankSlipRepository) {}
+  constructor(
+    @inject('BankSlipRepository')
+    private bankSlipRepository: IBankSlipRepository,
+  ) {}
 
   public async execute({
     due_date,

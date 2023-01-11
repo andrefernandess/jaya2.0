@@ -1,44 +1,108 @@
-# Teste JAYA (Não finalizado)
+<h1 align="center">
+  Teste JAYA
+</h1>
 
-Projeto realizado com intuito de teste para vaga de desenvolvedor na empresa JAYA.
+<h4 align="center">
+    Teste JAYA
+    📊 Com pendências ✅ 🚧
+</h4>
 
-## 🚀 Começando
+<p align="center">
+ <a href="#-sobre-o-projeto">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+ <a href="#wrench-funcionalidades">Funcionalidades</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+ <a href="#-como-executar-o-projeto">Como executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+ <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+ <a href="#autor">Autor</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+ <a href="#memo-licença">Licença</a>
+</p>
 
-Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
+## 💻 Sobre o projeto
 
-### 📋 Pré-requisitos
-
-De que coisas você precisa para instalar o software e como instalá-lo?
-
-Node JS
-Express
-TYPEORM
-MySql
-Docker
-Docker Compose
-
-### 🔧 Instalação
-
-Instale as ferramentas e pacotes necessarias para execução do projeto em ambiente de Desenvolvimento.
-Subir o container do MYSQL com docker compose up
-npm run typeorm  -- -d src/shared/typeorm/index.ts migration:run
+🚀
+O Projeto foi desenvolvido para fins de teste.
 
 
-## ⚙️ Executando os testes
+## ⚙️ Funcionalidades
 
-...
+- [x] Cadastro de Boletos
+- [x] Listagem de Boletos
+- [x] Ver de detalhes de Boleto
+- [x] Pagamento de Boletos
+- [x] Cancelamento de Boletos
+- [x] Cadastro de usuários
+- [x] Listagem de os usuários
+- [x] Criacao de Sessão
+- [x] Autenticação via JWT
 
-## 📦 Implantação
+---
 
-...
+## 📋 Como executar o projeto
 
-## 🛠️ Construído com
+### Pré-requisitos
 
-* [Node JS](https://nodejs.org/en/docs/)
-* [npm](https://www.npmjs.com/)
-* [MYSQL](https://www.mysql.com/)
-* [Docker](https://www.docker.com/)
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [Docker](https://docker.com).
 
-## ✒️ Autores
+### Primeiro Passo
 
-* **André Fernandes** - *Trabalho Inicial* - [AndréFernandes](https://www.linkedin.com/in/andrelfernandess/)
+```bash
+# Clone este repositório
+$ git clone https://github.com/andrefernandess/jaya2.0.git
+# Acesse a pasta do projeto no terminal/cmd
+$ cd jaia2.0
+```
+
+#### 🎲 Rodando o Backend (servidor)
+
+```bash
+# Instale as dependências
+$ npm install
+# Subindo container do banco
+$ docker compose up
+# Rodando as migracoes
+$ npm run typeorm  -- -d src/shared/typeorm/index.ts migration:run
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
+# O servidor inciará na porta:3000
+$ Executar os testes
+# Para executar os teste, execute o comando "jest" no terminal
+```
+
+## 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+-   **[Express](https://expressjs.com/)**
+-   **[CORS](https://expressjs.com/en/resources/middleware/cors.html)**
+-   **[ts-node](https://github.com/TypeStrong/ts-node)**
+-   **[Tsyringe](https://github.com/microsoft/tsyringe)**
+-   **[Typeorm](https://typeorm.io/)**
+-   **[JWT](https://jwt.io/introduction)**
+-   **[SWAGGER](https://swagger.io/)**
+
+## 🛠 Documentação
+
+Acessar o Swagger da aplicação
+
+-   **[SWAGGER](http://localhost:3000/api-docs/)**
+
+**Utilitários**
+
+-   Editor:  **[Visual Studio Code](https://code.visualstudio.com/)**  → Extensions:  **[ESlintJS](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)**, **[EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)**
+-   Markdown:  **[StackEdit](https://stackedit.io/)**,  **[Markdown Emoji](https://gist.github.com/rxaviers/7360908)**
+-   README Template:  **[README-ecoleta](https://github.com/tgmarinho/README-ecoleta/blob/master/README.md)**
+-   Teste de API:  **[Postman](https://www.postman.com/)**
+
+---
+
+## Autor
+
+Andre Fernandes
+---
+
+## ✒️ Licença
+
+Licença [MIT](./LICENSE).
+
+---
+Feito por Andre Fernandes [Entre em contato!](https://www.linkedin.com/in/andrelfernandess//)

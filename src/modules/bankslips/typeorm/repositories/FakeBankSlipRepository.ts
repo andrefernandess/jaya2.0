@@ -1,36 +1,36 @@
 import BankSlip from '../entities/bankslip';
 import { v4 as uuidv4 } from 'uuid';
-import { IBankSlipRepository } from './interfaces/IBankSlipRepository';
-import IBankSlipRequest from './interfaces/IRequest';
-
-interface IRequest {
-  due_date: Date;
-  total_in_cents: number;
-  customer: string;
-  status: string;
-}
+import { IBankSlipRepository } from '../../interfaces/IBankSlipRepository';
+import IBankSlipRequest from '../../interfaces/IRequest';
 
 class FakeBankSlipRepository implements IBankSlipRepository {
-  findByCustomerName(customerName: string): Promise<BankSlip | null> {
-    throw new Error('Method not implemented.');
-  }
-  update(data: IBankSlipRequest): Promise<BankSlip | null> {
-    throw new Error('Method not implemented.');
-  }
-  findOne(id: string): Promise<BankSlip | null> {
-    throw new Error('Method not implemented.');
-  }
-  find(): Promise<BankSlip[] | null> {
-    throw new Error('Method not implemented.');
-  }
   private bankSlips: BankSlip[] = [];
+
+  public async findByCustomerName(
+    customerName: string,
+  ): Promise<BankSlip | null> {
+    const ba = this.bankSlips.find(ba => ba.customer == customerName);
+
+    return null;
+  }
+  public async update(data: IBankSlipRequest): Promise<BankSlip> {
+    return this.bankSlips[0];
+  }
+  public async findOne(id: string): Promise<BankSlip | null> {
+    const ba = this.bankSlips.find(ba => ba.id == id);
+
+    return null;
+  }
+  public async find(): Promise<BankSlip[]> {
+    return this.bankSlips;
+  }
 
   public async create({
     due_date,
     total_in_cents,
     customer,
     status,
-  }: IBankSlipRequest): Promise<BankSlip | null> {
+  }: IBankSlipRequest): Promise<BankSlip> {
     const bankslip = new BankSlip();
 
     bankslip.id = uuidv4();

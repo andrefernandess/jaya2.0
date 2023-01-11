@@ -1,7 +1,7 @@
-import { inject, injectable } from 'tsyringe';
 import AppError from '../../../shared/errors/AppError';
 import BankSlip from '../typeorm/entities/bankslip';
-import { IBankSlipRepository } from '../typeorm/repositories/interfaces/IBankSlipRepository';
+import { IBankSlipRepository } from '../interfaces/IBankSlipRepository';
+import { injectable, inject } from 'tsyringe';
 
 interface IRequest {
   id: string;

@@ -1,7 +1,7 @@
 import AppError from '../../../shared/errors/AppError';
 import { BankSlipDto } from '../dtos/BankSlipDto';
 import { injectable, inject } from 'tsyringe';
-import { IBankSlipRepository } from '../typeorm/repositories/interfaces/IBankSlipRepository';
+import { IBankSlipRepository } from '../interfaces/IBankSlipRepository';
 
 interface IRequest {
   id: string;

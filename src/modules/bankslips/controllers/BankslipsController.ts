@@ -11,7 +11,7 @@ export default class bankSlipsController {
   public async get(request: Request, response: Response): Promise<Response> {
     const re = new BankSlipRepository();
     const service = new ListBankSlipService(re);
-
+    //const service = container.resolve(ListBankSlipService);
     const slips = await service.execute();
 
     return response.json(slips);
@@ -24,6 +24,7 @@ export default class bankSlipsController {
     const { id } = request.params;
     const re = new BankSlipRepository();
     const service = new GetBankSlipByIdService(re);
+    //const service = container.resolve(GetBankSlipByIdService);
 
     const slip = await service.execute({ id });
 
@@ -35,6 +36,7 @@ export default class bankSlipsController {
     const status = 'PENDING';
     const re = new BankSlipRepository();
     const service = new CreateBankSlipService(re);
+    //const service = container.resolve(CreateBankSlipService);
 
     const bl = await service.execute({
       due_date,
@@ -51,6 +53,7 @@ export default class bankSlipsController {
     const { id } = request.params;
     const re = new BankSlipRepository();
     const service = new PayBankSlipService(re);
+    //const service = container.resolve(PayBankSlipService);
 
     await service.execute({ id, payment_date });
 
@@ -61,6 +64,7 @@ export default class bankSlipsController {
     const { id } = request.params;
     const re = new BankSlipRepository();
     const service = new CancelBankSlipService(re);
+    //const service = container.resolve(CancelBankSlipService);
 
     await service.execute({ id });
 

@@ -11,7 +11,7 @@ export const dataSource = new DataSource({
   port: 3306,
   username: 'root',
   password: '12345',
-  database: 'Jaya',
+  database: 'jaya',
   entities: [User, BankSlip],
   migrations: [CreateBankSlipTable1672952734042, CreateUserTable1673057348888],
 });

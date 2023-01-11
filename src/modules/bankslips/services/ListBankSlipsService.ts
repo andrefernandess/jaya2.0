@@ -1,15 +1,19 @@
-import { inject, injectable } from 'tsyringe';
 import BankSlip from '../typeorm/entities/bankslip';
-import { IBankSlipRepository } from '../typeorm/repositories/interfaces/IBankSlipRepository';
+import { IBankSlipRepository } from '../interfaces/IBankSlipRepository';
+import { inject, injectable } from 'tsyringe';
 
 @injectable()
 class ListBankSlipService {
+  private bankSlipRepository: IBankSlipRepository;
+
   constructor(
     @inject('BankSlipRepository')
-    private bankSlipRepository: IBankSlipRepository,
-  ) {}
+    bankSlipRepository: IBankSlipRepository,
+  ) {
+    this.bankSlipRepository = bankSlipRepository;
+  }
   public async execute(): Promise<BankSlip[] | null> {
-    const bank_slips = await this.bankSlipRepository.find();
+    const bank_slips = this.bankSlipRepository.find();
 
     return bank_slips;
   }

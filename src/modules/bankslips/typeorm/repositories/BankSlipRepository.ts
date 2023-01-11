@@ -1,8 +1,8 @@
 import { dataSource } from '@shared/typeorm';
 import { Repository } from 'typeorm';
 import BankSlip from '../entities/bankslip';
-import { IBankSlipRepository } from './interfaces/IBankSlipRepository';
-import IBankSlipRequest from './interfaces/IRequest';
+import { IBankSlipRepository } from '../../interfaces/IBankSlipRepository';
+import IBankSlipRequest from '../../interfaces/IRequest';
 
 class BankSlipRepository implements IBankSlipRepository {
   private ormRepository: Repository<BankSlip>;
@@ -11,7 +11,7 @@ class BankSlipRepository implements IBankSlipRepository {
     this.ormRepository = dataSource.getRepository(BankSlip);
   }
 
-  findByCustomerName(customer: string): Promise<BankSlip | null> {
+  public async findByCustomerName(customer: string): Promise<BankSlip | null> {
     const bankslip = this.ormRepository.findOneBy({
       customer,
     });
@@ -24,7 +24,7 @@ class BankSlipRepository implements IBankSlipRepository {
     total_in_cents,
     customer,
     status,
-  }: IBankSlipRequest): Promise<BankSlip | null> {
+  }: IBankSlipRequest): Promise<BankSlip> {
     const bankslip = this.ormRepository.create({
       due_date,
       total_in_cents,
@@ -37,13 +37,13 @@ class BankSlipRepository implements IBankSlipRepository {
     return bankslip;
   }
 
-  public findOne(id: string): Promise<BankSlip | null> {
+  public async findOne(id: string): Promise<BankSlip | null> {
     const bankslip = this.ormRepository.findOneBy({ id });
 
     return bankslip;
   }
 
-  public find(): Promise<BankSlip[] | null> {
+  public find(): Promise<BankSlip[]> {
     const bls = this.ormRepository.find();
 
     return bls;
@@ -55,11 +55,10 @@ class BankSlipRepository implements IBankSlipRepository {
     return bankSlip;
   }
 
-  async update(bankSlip: BankSlip): Promise<BankSlip | null> {
+  public async update(bankSlip: BankSlip): Promise<BankSlip> {
     await this.ormRepository.save(bankSlip);
 
     return bankSlip;
   }
 }
-
 export default BankSlipRepository;
