@@ -1,23 +1,28 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+} from 'typeorm';
 
 @Entity('bank_slips')
 class BankSlip {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @CreateDateColumn()
   due_date: Date;
 
-  @Column()
+  @CreateDateColumn({ nullable: true })
   payment_date: Date;
 
   @Column('decimal')
   total_in_cents: number;
 
-  @Column()
+  @Column('varchar')
   customer: string;
 
-  @Column()
+  @Column('varchar')
   status: string;
 }
 

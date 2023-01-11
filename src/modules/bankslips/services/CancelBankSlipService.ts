@@ -1,24 +1,28 @@
 import AppError from '../../../shared/errors/AppError';
-import { getCustomRepository } from 'typeorm';
 import BankSlip from '../typeorm/entities/bankslip';
-import { BankSlipRepository } from '../typeorm/repositories/BankSlipRepository';
+import { IBankSlipRepository } from '../interfaces/IBankSlipRepository';
+import { injectable, inject } from 'tsyringe';
 
 interface IRequest {
   id: string;
 }
 
+@injectable()
 class CancelBankSlipByIdService {
-  public async execute({ id }: IRequest): Promise<BankSlip | undefined> {
-    const repository = getCustomRepository(BankSlipRepository);
+  constructor(
+    @inject('BankSlipRepository')
+    private bankSlipRepository: IBankSlipRepository,
+  ) {}
 
-    const bank_slip = await repository.findOne(id);
+  public async execute({ id }: IRequest): Promise<BankSlip | undefined> {
+    const bank_slip = await this.bankSlipRepository.findOne(id);
 
     if (!bank_slip) {
       throw new AppError('BankSlip not found with the specified id', 404);
     }
     bank_slip.status = 'Cancelado';
 
-    await repository.save(bank_slip);
+    await this.bankSlipRepository.update(bank_slip);
 
     return bank_slip;
   }

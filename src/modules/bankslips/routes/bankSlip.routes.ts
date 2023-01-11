@@ -2,6 +2,7 @@ import { Router } from 'express';
 import bankSlipsController from '../controllers/BankslipsController';
 import { celebrate, Joi, Segments } from 'celebrate';
 import isAuthenticated from '@shared/middlewares/isAuthenticated';
+// eslint-disable-next-line prettier/prettier
 
 const bankSlipRoutes = Router();
 const controller = new bankSlipsController();

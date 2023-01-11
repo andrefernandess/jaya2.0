@@ -1,31 +1,27 @@
-import { getCustomRepository } from 'typeorm';
+import { inject, injectable } from 'tsyringe';
 import BankSlip from '../typeorm/entities/bankslip';
-import { BankSlipRepository } from '../typeorm/repositories/BankSlipRepository';
+import { IBankSlipRepository } from '../interfaces/IBankSlipRepository';
+import IRequest from '../interfaces/IRequest';
 
-interface IRequest {
-  due_date: Date;
-  total_in_cents: number;
-  customer: string;
-  status: string;
-}
-
+@injectable()
 class CreateBankSlipService {
+  constructor(
+    @inject('BankSlipRepository')
+    private bankSlipRepository: IBankSlipRepository,
+  ) {}
+
   public async execute({
     due_date,
     total_in_cents,
     customer,
     status,
-  }: IRequest): Promise<BankSlip> {
-    const repository = getCustomRepository(BankSlipRepository);
-
-    const bankslip = repository.create({
+  }: IRequest): Promise<BankSlip | null> {
+    const bankslip = await this.bankSlipRepository.create({
       due_date,
       total_in_cents,
       customer,
       status,
     });
-
-    await repository.save(bankslip);
 
     return bankslip;
   }
