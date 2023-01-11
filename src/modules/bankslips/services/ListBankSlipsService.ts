@@ -1,12 +1,15 @@
-import { getCustomRepository } from 'typeorm';
+import { inject, injectable } from 'tsyringe';
 import BankSlip from '../typeorm/entities/bankslip';
-import { BankSlipRepository } from '../typeorm/repositories/BankSlipRepository';
+import { IBankSlipRepository } from '../typeorm/repositories/interfaces/IBankSlipRepository';
 
+@injectable()
 class ListBankSlipService {
-  public async execute(): Promise<BankSlip[] | undefined> {
-    const repository = getCustomRepository(BankSlipRepository);
-
-    const bank_slips = await repository.find();
+  constructor(
+    @inject('BankSlipRepository')
+    private bankSlipRepository: IBankSlipRepository,
+  ) {}
+  public async execute(): Promise<BankSlip[] | null> {
+    const bank_slips = await this.bankSlipRepository.find();
 
     return bank_slips;
   }

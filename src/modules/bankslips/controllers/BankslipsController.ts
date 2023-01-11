@@ -1,13 +1,16 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 import CancelBankSlipService from '../services/CancelBankSlipService';
 import CreateBankSlipService from '../services/CreateBankSlipService';
 import GetBankSlipByIdService from '../services/GetBankSlipByIdService';
 import ListBankSlipService from '../services/ListBankSlipsService';
 import PayBankSlipService from '../services/PayBankSlipService';
+import BankSlipRepository from '../typeorm/repositories/BankSlipRepository';
 
 export default class bankSlipsController {
   public async get(request: Request, response: Response): Promise<Response> {
-    const service = new ListBankSlipService();
+    const re = new BankSlipRepository();
+    const service = new ListBankSlipService(re);
 
     const slips = await service.execute();
 
@@ -19,7 +22,8 @@ export default class bankSlipsController {
     response: Response,
   ): Promise<Response> {
     const { id } = request.params;
-    const service = new GetBankSlipByIdService();
+    const re = new BankSlipRepository();
+    const service = new GetBankSlipByIdService(re);
 
     const slip = await service.execute({ id });
 
@@ -29,7 +33,8 @@ export default class bankSlipsController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { due_date, total_in_cents, customer } = request.body;
     const status = 'PENDING';
-    const service = new CreateBankSlipService();
+    const re = new BankSlipRepository();
+    const service = new CreateBankSlipService(re);
 
     const bl = await service.execute({
       due_date,
@@ -44,8 +49,8 @@ export default class bankSlipsController {
   public async pay(request: Request, response: Response): Promise<Response> {
     const { payment_date } = request.body;
     const { id } = request.params;
-
-    const service = new PayBankSlipService();
+    const re = new BankSlipRepository();
+    const service = new PayBankSlipService(re);
 
     await service.execute({ id, payment_date });
 
@@ -54,8 +59,8 @@ export default class bankSlipsController {
 
   public async cancel(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
-
-    const service = new CancelBankSlipService();
+    const re = new BankSlipRepository();
+    const service = new CancelBankSlipService(re);
 
     await service.execute({ id });
 

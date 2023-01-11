@@ -18,6 +18,7 @@ export class CreateBankSlipTable1672952734042 implements MigrationInterface {
           {
             name: `payment_date`,
             type: 'date',
+            isNullable: true,
           },
           {
             name: `total_in_cents`,

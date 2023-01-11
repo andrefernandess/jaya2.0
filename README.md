@@ -21,7 +21,8 @@ Docker Compose
 
 Instale as ferramentas e pacotes necessarias para execução do projeto em ambiente de Desenvolvimento.
 Subir o container do MYSQL com docker compose up
-npm run typeorm migration:run
+npm run typeorm  -- -d src/shared/typeorm/index.ts migration:run
+
 
 ## ⚙️ Executando os testes
 
