@@ -1,5 +1,6 @@
+import 'reflect-metadata';
 import { Request, Response } from 'express';
-import { container } from 'tsyringe';
+//import { container } from 'tsyringe';
 import CancelBankSlipService from '../services/CancelBankSlipService';
 import CreateBankSlipService from '../services/CreateBankSlipService';
 import GetBankSlipByIdService from '../services/GetBankSlipByIdService';
