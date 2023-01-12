@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { app } from '@shared/http/app';
 import request from 'supertest';
 
